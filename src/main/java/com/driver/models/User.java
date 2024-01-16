@@ -12,21 +12,21 @@ import static javax.persistence.CascadeType.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
+    private Integer Id;
 
-    private String userName;
+    private String username;
 
     private String password;
 
     private String firstName;
     private String lastName;
 
-    User(){
+    public User(){
 
     }
 
     public User(String userName,String password,String firstName,String lastName){
-        this.userName=userName;
+        this.username=userName;
         this.password=password;
         this.firstName=firstName;
         this.lastName=lastName;
@@ -37,15 +37,15 @@ public class User {
 
 
     public User(String userName,String password){
-        this.userName=userName;
+        this.username=userName;
         this.password=password;
         this.firstName="test";
         this.lastName="test";
 
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getId() {
+        return Id;
     }
 
     public String getFirstName() {
@@ -60,12 +60,12 @@ public class User {
         return password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     public void setId(Integer id) {
-        this.userId = id;
+        this.Id = id;
     }
 
     public void setPassword(String password) {
@@ -80,8 +80,8 @@ public class User {
         this.lastName = lastName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)

@@ -28,7 +28,9 @@ public class BlogService {
     public Blog createAndReturnBlog(Integer userId, String title, String content) {
         //create a blog at the current time
 
-            Blog newBlog=new Blog(title, content);
+            Blog newBlog=new Blog();
+            newBlog.setTitle(title);
+            newBlog.setContent(content);
             blogRepository1.save(newBlog);
 
         Optional<User> userOptional=userRepository1.findById(userId);
@@ -53,7 +55,7 @@ public class BlogService {
             blogRepository1.deleteById(blogId);
 
             for(Image i:ll){
-                imageRepository.deleteById(i.getImageId());
+                imageRepository.deleteById(i.getId());
             }
 
             User user=blog.getUser();

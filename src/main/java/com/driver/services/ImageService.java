@@ -19,8 +19,9 @@ public class ImageService {
     public Image addImage(Integer blogId, String description, String dimensions){
         //add an image to the blog
 
-        Image image=new Image(description,dimensions);
-
+        Image image=new Image( );
+            image.setDescription(description);
+            image.setDimensions(dimensions);
         Optional<Blog>  blog=blogRepository2.findById(blogId);
         Blog bb=blog.get();
         image.setBlog(bb);
@@ -52,11 +53,11 @@ public class ImageService {
 
         String size= image.getDimensions();
 
-        String temp[]=size.split("*");
+        String temp[]=size.split("X");
         int a=Integer.valueOf(temp[0]);
         int b=Integer.valueOf(temp[1]);
 
-        String given[]=screenDimensions.split("*");
+        String given[]=screenDimensions.split("X");
         int c=Integer.valueOf(given[0]);
         int d=Integer.valueOf(given[1]);
 

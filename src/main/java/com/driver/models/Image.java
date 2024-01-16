@@ -9,13 +9,13 @@ public class Image{
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer imageId;
+        private Integer Id;
 
         private String description;
         private String dimensions;
 
 
-        Image(){
+       public Image(){
 
         }
         public Image(String description,String dimensions){
@@ -31,12 +31,12 @@ public class Image{
                 this.dimensions = dimensions;
         }
 
-        public void setImageId(Integer imageId) {
-                this.imageId = imageId;
+        public void setId(Integer imageId) {
+                this.Id = imageId;
         }
 
-        public Integer getImageId() {
-                return imageId;
+        public Integer getId() {
+                return this.Id;
         }
 
         public String getDescription() {

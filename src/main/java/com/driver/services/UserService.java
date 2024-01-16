@@ -18,7 +18,9 @@ public class UserService {
     @Autowired
     private BlogRepository blogRepository;
     public User createUser(String username, String password){
-            User newUser=new User(username,password);
+            User newUser=new User();
+            newUser.setUsername(username);
+            newUser.setPassword(password);
             userRepository3.save(newUser);
 
     return newUser;
@@ -34,7 +36,7 @@ public class UserService {
         userRepository3.deleteById(userId);
 
         for(Blog i:temp){
-            blogRepository.deleteById(i.getBlogId());
+            blogRepository.deleteById(i.getId());
 
 
         }

@@ -14,14 +14,14 @@ public class Blog{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer blogId;
+    private Integer Id;
 
     private String title;
     private String content;
 
     private Date pubDate;
 
-    Blog(){
+    public Blog(){
 
     }
     public Blog(String title,String content){
@@ -34,8 +34,8 @@ public class Blog{
         return content;
     }
 
-    public Integer getBlogId() {
-        return blogId;
+    public Integer getId() {
+        return Id;
     }
 
     public Date getPubDate() {
@@ -46,8 +46,8 @@ public class Blog{
         return title;
     }
 
-    public void setBlogId(Integer id) {
-        this.blogId = id;
+    public void setId(Integer id) {
+        this.Id = id;
     }
 
     public void setPubDate(Date pubDate) {
