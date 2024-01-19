@@ -15,6 +15,10 @@ public class Image{
         private String dimensions;
 
 
+    @JoinColumn
+    @ManyToOne
+    private Blog blog;
+
        public Image(){
 
         }
@@ -47,9 +51,7 @@ public class Image{
                 return dimensions;
         }
 
-        @JoinColumn
-        @ManyToOne
-        private Blog blog;
+
 
         public Blog getBlog() {
                 return blog;

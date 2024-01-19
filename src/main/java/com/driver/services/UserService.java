@@ -29,13 +29,9 @@ public class UserService {
 
     public void deleteUser(int userId){
         //delete user and respective blog
-        Optional<User> uu=userRepository3.findById(userId);
-        if(uu.isEmpty()){
-            return ;
-        }
-        User user=uu.get();
 
-        List<Blog> temp= user.getBlogList();
+
+
 
         userRepository3.deleteById(userId);
 

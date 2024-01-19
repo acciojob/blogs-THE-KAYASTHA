@@ -28,15 +28,13 @@ public class ImageService {
         imageRepository2.save(image);
 
 
-
+        // not saved in blog list
         return image;
     }
 
     public void deleteImage(Integer id){
 
-        Optional<Image> optionalImage=imageRepository2.findById(id);
 
-        Image image=optionalImage.get();
         imageRepository2.deleteById(id);
 
 
@@ -63,9 +61,7 @@ public class ImageService {
         int myScreenSize=a*b;
         int givenScreenSize=c*d;
 
-        if(myScreenSize>givenScreenSize){
-            return 0;
-        }
+
 
         return givenScreenSize/myScreenSize;
 

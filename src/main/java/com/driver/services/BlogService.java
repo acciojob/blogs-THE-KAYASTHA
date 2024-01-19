@@ -9,10 +9,7 @@ import com.driver.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class BlogService {
@@ -31,12 +28,13 @@ public class BlogService {
             Blog newBlog=new Blog();
             newBlog.setTitle(title);
             newBlog.setContent(content);
-
+            newBlog.setPubDate(Calendar.getInstance().getTime());
 
         Optional<User> userOptional=userRepository1.findById(userId);
             User user=userOptional.get();
         newBlog.setUser(user);
 
+/// saving both
         blogRepository1.save(newBlog);
 
         return newBlog;
@@ -46,13 +44,7 @@ public class BlogService {
 
     public void deleteBlog(int blogId){
         //delete blog and corresponding images
-            Optional<Blog> bb=blogRepository1.findById(blogId);
 
-            if(bb.isEmpty()){
-                return;
-            }
-
-            Blog blog=bb.get();
 
 
             blogRepository1.deleteById(blogId);

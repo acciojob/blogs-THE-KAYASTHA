@@ -21,6 +21,9 @@ public class User {
     private String firstName;
     private String lastName;
 
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Blog> blogList=new ArrayList<>();
     public User(){
 
     }
@@ -84,9 +87,7 @@ public class User {
         this.username = userName;
     }
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
 
-    private List<Blog> blogList=new ArrayList<>();
 
 
     public List<Blog> getBlogList() {

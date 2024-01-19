@@ -1,5 +1,7 @@
 package com.driver.models;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,7 +21,16 @@ public class Blog{
     private String title;
     private String content;
 
+
+
     private Date pubDate;
+
+    @JoinColumn
+    @ManyToOne
+    private User user;
+
+    @OneToMany(mappedBy = "blog",cascade =CascadeType.ALL)
+    private List<Image> imageList=new ArrayList<>();
 
     public Blog(){
 
@@ -63,12 +74,7 @@ public class Blog{
     }
 
 
-    @JoinColumn
-    @ManyToOne
-    private User user;
 
-    @OneToMany(mappedBy = "blog",cascade =CascadeType.ALL)
-    private List<Image> imageList=new ArrayList<>();
 
     public List<Image> getImageList() {
         return imageList;
