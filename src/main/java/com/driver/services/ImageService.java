@@ -25,7 +25,10 @@ public class ImageService {
         Optional<Blog>  blog=blogRepository2.findById(blogId);
         Blog bb=blog.get();
         image.setBlog(bb);
-        imageRepository2.save(image);
+
+
+        bb.getImageList().add(image);
+        blogRepository2.save(bb);
 
 
         // not saved in blog list
