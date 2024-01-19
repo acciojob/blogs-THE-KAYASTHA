@@ -26,9 +26,9 @@ public class ImageService {
         Blog bb=blog.get();
         image.setBlog(bb);
         imageRepository2.save(image);
-        List<Image> temp=bb.getImageList();
-        temp.add(image);
-        bb.setImageList(temp);
+
+
+
         return image;
     }
 
@@ -38,8 +38,7 @@ public class ImageService {
 
         Image image=optionalImage.get();
         imageRepository2.deleteById(id);
-        Blog blog=image.getBlog();
-        blog.getImageList().remove(image);
+
 
 
 

@@ -31,14 +31,13 @@ public class BlogService {
             Blog newBlog=new Blog();
             newBlog.setTitle(title);
             newBlog.setContent(content);
-            blogRepository1.save(newBlog);
+
 
         Optional<User> userOptional=userRepository1.findById(userId);
             User user=userOptional.get();
         newBlog.setUser(user);
-        List<Blog> ll=user.getBlogList();
-        ll.add(newBlog);
-        user.setBlogList(ll);
+
+        blogRepository1.save(newBlog);
 
         return newBlog;
 
@@ -49,17 +48,14 @@ public class BlogService {
         //delete blog and corresponding images
             Optional<Blog> bb=blogRepository1.findById(blogId);
 
-            Blog blog=bb.get();
-            List<Image> ll=blog.getImageList();
-
-            blogRepository1.deleteById(blogId);
-
-            for(Image i:ll){
-                imageRepository.deleteById(i.getId());
+            if(bb.isEmpty()){
+                return;
             }
 
-            User user=blog.getUser();
-            user.getBlogList().remove(blog);
+            Blog blog=bb.get();
+
+
+            blogRepository1.deleteById(blogId);
 
 
     }
